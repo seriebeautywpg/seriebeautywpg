@@ -1,7 +1,5 @@
 'use client'
 import MediaImage from '@/components/MediaImage'
-
-
 import SiteLink from '@/components/SiteLink'
 import { useEffect, useRef, useState } from "react";
 import { bookingUrl } from "@/data/site";
