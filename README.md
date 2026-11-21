@@ -1,34 +1,53 @@
-# SERIÉ — Next.js
+# SERIÉ
 
-Migrated from the sibling Vite project without modifying it.
+Official website for SERIÉ, built with Next.js. This repository contains the production codebase for the live site, migrated from an earlier Vite-based build with no changes to design or functionality.
 
-## Run locally
+## Overview
 
-Use Node.js 20.9 or newer. Run npm install, then npm run dev. Open http://localhost:3000. Both development and production builds explicitly use Webpack.
+The site preserves the original design, content, scrolling effects, preloader timing, external booking destination, and desktop-only circular text exactly as they were in the previous version. No CMS or new pages were introduced during the migration — this is a framework upgrade, not a redesign.
 
-## Commands
+## Tech Stack
 
-- npm run dev — Next.js development with Webpack
-- npm run build — production build with Webpack
-- npm start — serve the production build
-- npm run lint — ESLint
+- **Framework:** Next.js (App Router)
+- **UI:** React, Tailwind CSS
+- **Bundler:** Webpack (both development and production)
+- **Linting:** ESLint
+- **Package manager:** npm
 
-## Structure
+The project uses a root `app/` directory (no `src/`) with a `@/*` import alias. The React Compiler is disabled.
 
-- app/ — App Router routes, root layout, metadata, error and 404 pages
-- components/ — shared visual and interactive components
-- views/ — existing page designs composed by App Router routes
-- data/ — service details, FAQs, policies and training copy
-- public/assets/ — original images and videos
+## Getting Started
 
-JavaScript/JSX, Tailwind CSS, npm, ESLint, root app directory, @/* alias. No src directory. React Compiler is off.
+Requires Node.js 20.9 or newer.
 
-## EmailJS
+```bash
+npm install
+npm run dev
+```
 
-Copy .env.example to .env.local and supply the NEXT_PUBLIC_EMAILJS_* values. The old VITE_* names are no longer used. These are public browser identifiers; do not add a private EmailJS key. Forms keep their existing behavior and show a fallback if credentials are missing. Live email delivery requires the supplied EmailJS templates and a real submission test.
+Then open http://localhost:3000.
+
+### Available Scripts
+
+| Command | Description |
+|---|---|
+| `npm run dev` | Start the development server |
+| `npm run build` | Create a production build |
+| `npm start` | Serve the production build |
+| `npm run lint` | Run ESLint |
+
+## Project Structure
+
+- `app/` — App Router routes, root layout, metadata, and error/404 pages
+- `components/` — shared visual and interactive components
+- `views/` — page designs composed by the App Router routes
+- `data/` — service details, FAQs, policies, and training copy
+- `public/assets/` — images and video assets
+
+## Environment Variables
+
+Copy `.env.example` to `.env.local` and provide the `NEXT_PUBLIC_EMAILJS_*` values (the older `VITE_*` names from the previous build are no longer used). These are public, client-side identifiers — no private EmailJS key should be added. Contact forms degrade gracefully if credentials are missing, but a live test submission is recommended before launch.
 
 ## Deployment
 
-Deploy this folder as a Next.js project on Vercel. Use npm run build and automatic Next.js output settings. Do not copy the Vite vercel.json rewrites or set output to dist. Add the NEXT_PUBLIC_EMAILJS_* values in the hosting environment and rebuild. Legacy service URLs redirect to their canonical service pages; unknown URLs use the App Router 404.
-
-The design, content, scrolling effects, preloader timing, external booking destination, and desktop-only circular text are preserved. No CMS or new pages were added as part of the migration.
+Deployed as a standard Next.js project on Vercel using `npm run build` with default Next.js output settings. Do not reuse the old Vite `vercel.json` rewrites or set the output to `dist`. Add the `NEXT_PUBLIC_EMAILJS_*` values to the hosting environment and trigger a rebuild. Legacy service URLs redirect to their canonical pages; unrecognized URLs fall through to the App Router 404 page.
