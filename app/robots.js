@@ -1,4 +1,12 @@
-import { absoluteUrl, isPreview } from '@/lib/seo'
+import { absoluteUrl, isPreview } from "@/lib/seo";
+
+export const dynamic = "force-static";
+
 export default function robots() {
-  return isPreview ? { rules: { userAgent: '*', disallow: '/' } } : { rules: { userAgent: '*', allow: '/', disallow: ['/api/'] }, sitemap: absoluteUrl('/sitemap.xml') }
+  return isPreview
+    ? { rules: { userAgent: "*", disallow: "/" } }
+    : {
+        rules: { userAgent: "*", allow: "/", disallow: ["/api/"] },
+        sitemap: absoluteUrl("/sitemap.xml"),
+      };
 }
