@@ -1,6 +1,6 @@
 # SEO implementation and launch notes
 
-Research date: October 27, 2026. Canonical domain confirmed by the owner: https://seribeauty.ca.
+Research date: October 27, 2026. Canonical domain confirmed by the owner: https://seriebeauty.ca.
 
 ## Keyword research
 
@@ -42,9 +42,9 @@ Each service has its own canonical page and metadata. Training targets education
 
 ## Before production launch
 
-1. Connect seribeauty.ca in the hosting dashboard and enable HTTPS. Redirect www to the chosen apex domain. Domain setup has not been performed by this code change.
-2. Use SITE_URL=https://seribeauty.ca, SITE_NOINDEX=false, and VERCEL_ENV=production (Vercel manages VERCEL_ENV). Rebuild after environment changes.
-3. Verify the domain in Google Search Console and Bing Webmaster Tools. Add supplied verification tokens if using HTML verification, then rebuild. Submit https://seribeauty.ca/sitemap.xml after launch.
+1. Connect seriebeauty.ca in the hosting dashboard and enable HTTPS. Redirect www to the chosen apex domain. Domain setup has not been performed by this code change.
+2. Use SITE_URL=https://seriebeauty.ca, SITE_NOINDEX=false, and VERCEL_ENV=production (Vercel manages VERCEL_ENV). Rebuild after environment changes.
+3. Verify the domain in Google Search Console and Bing Webmaster Tools. Add supplied verification tokens if using HTML verification, then rebuild. Submit https://seriebeauty.ca/sitemap.xml after launch.
 4. Configure permanent redirects on the old alluredbyseri.com host to the matching new pages. Redirecting that external domain is not accomplished by metadata on the new site. Existing legacy service-path redirects are already in next.config.mjs; inventory the old site's remaining live URLs before switching it off.
 5. Update the Google Business Profile and Instagram website link to the new domain, using the confirmed studio address. These external profiles have not been changed.
 6. Validate the live URLs with Google's Rich Results Test and Schema.org Validator; inspect indexing and social previews after deployment. Monitor Search Console after the domain change.
