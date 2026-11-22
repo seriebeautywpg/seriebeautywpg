@@ -5,6 +5,7 @@ import { siteSchema } from '@/lib/schema'
 import JsonLd from '@/components/JsonLd'
 import { Playfair_Display, Open_Sans, Cormorant_Garamond } from 'next/font/google'
 import SiteChrome from '@/components/SiteChrome'
+import Script from 'next/script'
 import './globals.css'
 
 const heading = Playfair_Display({ subsets: ['latin'], weight: 'variable', variable: '--font-playfair', display: 'swap' })
@@ -22,7 +23,31 @@ export const metadata = {
   description: 'Personalized lash extensions, Korean lash lifts, brow lamination, Nano and Combo Brows, and hands-on training with Seri in Winnipeg.',
 }
 
+const gtmId = process.env.NEXT_PUBLIC_GTM_ID
+
 export default async function RootLayout({ children }) {
   const {settings,images,announcement}=await getContent()
-  return <html lang="en" className={'scroll-smooth motion-reduce:scroll-auto ' + heading.variable + ' ' + body.variable + ' ' + editorial.variable}><body><JsonLd data={siteSchema(settings)} /><div id="root"><ContentSettings value={{settings,images}}><SiteChrome announcement={announcement} />{children}</ContentSettings></div></body></html>
+  return (
+    <html lang="en" className={'scroll-smooth motion-reduce:scroll-auto ' + heading.variable + ' ' + body.variable + ' ' + editorial.variable}>
+      <body>
+        {gtmId && (
+          <>
+            <Script src={`https://www.googletagmanager.com/gtm.js?id=${gtmId}`} strategy="afterInteractive" />
+            <Script id="gtag-init" strategy="afterInteractive">
+              {`window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());`}
+            </Script>
+          </>
+        )}
+        <JsonLd data={siteSchema(settings)} />
+        <div id="root">
+          <ContentSettings value={{settings,images}}>
+            <SiteChrome announcement={announcement} />
+            {children}
+          </ContentSettings>
+        </div>
+      </body>
+    </html>
+  )
 }
