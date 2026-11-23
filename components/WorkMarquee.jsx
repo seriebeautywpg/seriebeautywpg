@@ -68,7 +68,7 @@ export default function WorkMarquee() {
       aria-labelledby="work-heading"
       className="bg-off-white py-16 text-espresso md:py-24"
     >
-      <div className="mx-auto mb-10 max-w-[1440px] px-6 md:px-10 lg:px-16 text-center">
+      {/* <div className="mx-auto mb-10 max-w-[1440px] px-6 md:px-10 lg:px-16 text-center">
         <p className="text-[10px] font-medium uppercase tracking-[0.16em]">
           {"{ Our Work }"}
         </p>
@@ -80,7 +80,7 @@ export default function WorkMarquee() {
         </RevealHeading>
       </div>
 
-      <ExperienceStats/>
+      <ExperienceStats/>/ */}
 
       <div className="grid gap-4">
         <MarqueeRow items={rowOne} />
